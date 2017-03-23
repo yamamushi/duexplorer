@@ -22,3 +22,11 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+# OS Stuff
+
+# ide stuff
+.idea
+
+# Configs
+config.json

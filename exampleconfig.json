@@ -1,8 +1,9 @@
 {
+  "mongohost": "localhost",
   "mongouser": "testpass",
   "mongopass": "testuser",
   "mongoport": 39430,
   "dbname": "duexplorer",
   "listenport": 9001,
-  "debugmode": "false"
+  "debugmode": false
 }

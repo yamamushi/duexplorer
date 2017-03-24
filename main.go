@@ -2,14 +2,14 @@
 package main
 
 import (
-	config "./configreader"
+	"./config"
 	"./models"
 	"fmt"
 	"log"
 	"strconv"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-	"github.com/yamamushi/duexplorer/configreader"
+	"encoding/json"
 )
 
 
@@ -17,7 +17,7 @@ import (
 func main(){
 
 	config.Read()
-	//fmt.Println(configreader.GetMongoCreds())
+	//fmt.Println(config.GetMongoCreds())
 
 	// There is another (probably better) way of assembling this session, but this will do for now...
 	session, err := mgo.Dial("mongodb://"+config.GetMongoUser()+":"+config.GetMongoPass()+
@@ -28,24 +28,20 @@ func main(){
 	defer session.Close()
 	session.SetMode(mgo.Monotonic, true)
 
-	/*
-	c := session.DB("test").C("people")
-	err = c.Insert(&Person{"Ale", "+55 53 8116 9639"},
-		&Person{"Cla", "+55 53 8402 8510"})
-	if err != nil {
-		log.Fatal(err)
-	} */
+	c := session.DB(config.GetDBName()).C("users")
 
-
-	//result := models.Users{}
-	c := session.DB(configreader.GetDBName()).C("users")
-
-	var result = models.Users{}
-	err = c.Find(bson.M{"pledgeStatus": "gold"}).All(&result)
+	result := []models.Users{}
+	err = c.Find(bson.M{"user":"Wardion2000"}).All(&result)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Pledge Status:", result)
+	formatter := json.MarshalIndent
+	response, err := formatter(result, " ", "    ")
+
+	//m, _ := json.Marshal(result)
+	//t := json.Unmarshal(m, &[]models.Users{})
+	fmt.Println("Pledge Status:", string(response))
 	
 }
+

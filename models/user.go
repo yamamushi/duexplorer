@@ -1,6 +1,6 @@
 package models
 
-type Users [] struct {
+type Users struct {
 	/*ID struct {
 		Oid string `bson:"$oid" json:"$oid"`
 	} `json:"_id"` */

@@ -1,4 +1,4 @@
-package configreader
+package config
 
 import (
 	"io/ioutil"

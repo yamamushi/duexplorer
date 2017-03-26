@@ -1,21 +1,21 @@
 package config
 
 import (
-	"io/ioutil"
-	"fmt"
-	"os"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"os"
 )
 
 var mongohost string
 var mongouser string
 var mongopass string
 var mongoport int
-var dbname	string
-var listenport	int
-var debugmode	bool
+var dbname string
+var listenport int
+var debugmode bool
 
-func Read(){
+func Read() {
 
 	fmt.Println("Reading Configuration file...")
 
@@ -26,13 +26,13 @@ func Read(){
 	}
 
 	var configSettings struct {
-		Mongohost string
-		Mongouser string
-		Mongopass string
-		Mongoport int
-		Dbname string
+		Mongohost  string
+		Mongouser  string
+		Mongopass  string
+		Mongoport  int
+		Dbname     string
 		Listenport int
-		Debugmode bool
+		Debugmode  bool
 	}
 
 	json.Unmarshal(file, &configSettings)
@@ -41,7 +41,7 @@ func Read(){
 	mongouser = configSettings.Mongouser
 	mongopass = configSettings.Mongopass
 	mongoport = configSettings.Mongoport
-	dbname	  = configSettings.Dbname
+	dbname = configSettings.Dbname
 	listenport = configSettings.Listenport
 	debugmode = configSettings.Debugmode
 
@@ -69,7 +69,7 @@ func GetDBName() string {
 	return dbname
 }
 
-func GetMongoCreds() (host string, user string, pass string, port int, db string){
+func GetMongoCreds() (host string, user string, pass string, port int, db string) {
 
 	return mongohost, mongouser, mongopass, mongoport, dbname
 }

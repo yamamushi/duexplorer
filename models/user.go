@@ -1,12 +1,12 @@
 package models
 
-type Users struct {
+type User struct {
 	/*ID struct {
 		Oid string `bson:"$oid" json:"$oid"`
 	} `json:"_id"` */
-	User         string `bson:"user" json:"user"`
-	CreatedDate  string `bson:"createdDate" json:"createdDate"`
-	PledgeStatus string `bson:"pledgeStatus" json:"pledgeStatus"`
+	User          string `bson:"user" json:"user"`
+	CreatedDate   string `bson:"createdDate" json:"createdDate"`
+	PledgeStatus  string `bson:"pledgeStatus" json:"pledgeStatus"`
 	Organizations []struct {
 		Orgname  string `bson:"orgname" json:"orgname"`
 		JoinDate string `bson:"joinDate" json:"joinDate"`

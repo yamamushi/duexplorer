@@ -1,7 +1,7 @@
 {
   "mongohost": "localhost",
-  "mongouser": "testpass",
-  "mongopass": "testuser",
+  "mongouser": "replaceme",
+  "mongopass": "replaceme",
   "mongoport": 39430,
   "dbname": "duexplorer",
   "listenport": 9001,
